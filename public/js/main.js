@@ -1,3 +1,4 @@
 const root = document.getElementById('root');
 
-homeViewRequest();
+// homeViewRequest();
+homepageRender();

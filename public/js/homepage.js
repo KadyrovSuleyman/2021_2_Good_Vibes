@@ -124,8 +124,13 @@ class Header {
         <input type="search" id="search-bar" placeholder="search here..." />
         <label for="search-bar" class="fas fa-search"></label>
       </form>
+    
+      <link rel="stylesheet" href="components/Header/Header.css"/>
+
         `;
         ROOT_HEADER.innerHTML = html;
+
+        // import styles from "./css/Button.css";
     }
 }
 
@@ -161,6 +166,8 @@ class Home {
           muted
         ></video>
       </div>
+
+      <link rel="stylesheet" href="components/Home/Home.css" />
         `;
         ROOT_HOME.innerHTML = html;
     }
@@ -206,6 +213,8 @@ class Products {
         <div class="product-container">
             ${htmlCatalog}
         </div>
+
+        <link rel="stylesheet" href="components/Products/Products.css" />
         `;
         ROOT_PRODUCTS.innerHTML = html;
     }
