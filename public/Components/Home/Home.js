@@ -30,5 +30,5 @@ class Home {
     }
 }
 
-const homePage = new Home();
-homePage.render();
+// const homePage = new Home();
+// homePage.render();

@@ -30,5 +30,5 @@ class Header {
     }
 }
 
-const headerPage = new Header();
-headerPage.render();
+// const headerPage = new Header();
+// headerPage.render();

@@ -19,26 +19,26 @@ export default class HomeView {
     render() {
         root.innerHTML = '';
 
-        const homeView = document.createElement('div');
+        // const homeView = document.createElement('div');
 
-        const span = document.createElement('span');
-        span.textContent = `Authorized user: ${this.#username}\n
-                            User's email: ${this.#email}\n
-                            User's password: ${this.#password}\n`;
+        // const span = document.createElement('span');
+        // span.textContent = `Authorized user: ${this.#username}\n
+        //                     User's email: ${this.#email}\n
+        //                     User's password: ${this.#password}\n`;
 
-        homeView.appendChild(span);
+        // homeView.appendChild(span);
 
-        const back = document.createElement('a');
-        back.href = '/';
-        back.textContent = 'Log out';
+        // const back = document.createElement('a');
+        // back.href = '/';
+        // back.textContent = 'Log out';
 
-        homeView.appendChild(back);
+        // homeView.appendChild(back);
 
-        back.addEventListener('click', (e) => {
-            e.preventDefault();
+        // back.addEventListener('click', (e) => {
+        //     e.preventDefault();
 
-            logOutRequest();
-        });
+        //     logOutRequest();
+        // });
 
         homepageRender();
 
