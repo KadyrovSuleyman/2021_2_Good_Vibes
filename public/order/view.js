@@ -1,17 +1,17 @@
 /* eslint-disable import/extensions */
 import View from '../scripts/view.js';
 import generateContentHTML from '../scripts/loadTemplates.js';
-
-const orderUrl = './order/template.handlebars';
+import orderListeners from './listeners.js';
+import orderEvents from './events.js';
+import compiledTemplate from './template.handlebars';
+import eventBus from '../scripts/eventBus.js';
 
 export default class Order extends View {
-  #url = orderUrl;
-
   element;
 
   #context;
 
-  //#generateEvents = orderEvents;
+  #generateEvents = orderEvents;
 
   constructor(element) {
     super(element);
@@ -19,43 +19,18 @@ export default class Order extends View {
   }
 
   async #renderHTML() {
-    const html = await generateContentHTML({
-      url: this.#url,
-      context: this.#context
-    });
+    const html = compiledTemplate(this.#context);
     this.element.innerHTML = html;
-  }
-
-  #createStepsHTML() {
-    const stepsParent = this.element.getElementsByClassName('steps')[0];
-    const stepsElem = document.createElement('div');
-    stepsElem.className = 'steps';
-
-    const temp = (step) => {
-      return `
-      <div class="steps">
-      <div class="${step ? 'active' : ''}">Signin</div>
-      <div class="${step ? 'active' : ''}">Shipping</div>
-      <div class="${step ? 'active' : ''}">Payment</div>
-      <div class="${step ? 'active' : ''}">Place Order</div>
-    </div>
-        `;
-    };
-
-    stepsElem.innerHTML = temp(this.#context.step);
-    stepsParent.replaceWith(stepsElem);
   }
 
   async render() {
     await this.#renderHTML();
-    //eventBus.add(orderListeners);
-    //this.#generateEvents(this.element);
-    this.#createStepsHTML();
+    eventBus.add(orderListeners);
+    this.#generateEvents(this.element);
     return this.show();
   }
 
   delete() {
-    // eventBus.delete(signinListeners);
     this.element.innerHTML = '';
   }
 }

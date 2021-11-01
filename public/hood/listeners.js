@@ -4,6 +4,12 @@ import eventBus from '../scripts/eventBus.js';
 
 const hoodListeners = [
   {
+    event: 'aside button click',
+    callback: [
+      hood.showAside
+    ]
+  },
+  {
     event: 'logo button click',
     callback: [
       hood.homepageStateRequest,
@@ -14,36 +20,18 @@ const hoodListeners = [
     event: 'profile button click',
     callback: [
       hood.profileStateRequest,
+
       // hood.addProfileToHistory
     ]
   },
-  // {
-  //   event: 'authorization',
-  //   callback: [
-  //     () => {
-  //       console.log('authorization');
-  //     }
-  //   ]
-  // },
-  // {
-  //   event: 'no authorization',
-  //   callback: [
-  //     () => {
-  //       console.log('no authorization');
-  //     }
-  //   ]
-  // },
+
   {
     event: 'cart-click',
     callback: [
-      // hood.showCart,
-
-      // hood.cartGetRequest
-
-      hood.cartStateRequest
+      hood.cartStateRequest,
 
       // () => {
-      //   eventBus.emit('product add request');
+      //   eventBus.emit('category get request');
       // }
     ]
   },

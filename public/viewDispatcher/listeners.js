@@ -15,9 +15,10 @@ const viewDispatcherListeners = [
   {
     event: 'logout success',
     callback: [
-      model.showSavedState,
+      model.dropCart,
       model.deleteUser,
-      model.dropCart
+      model.cleanCartView,
+      model.showSavedState,
     ]
   },
 
@@ -247,6 +248,60 @@ const viewDispatcherListeners = [
     event: 'calculate subtotal',
     callback: [
       model.subtotal
+    ]
+  },
+
+  {
+    event: 'hood render finished',
+    callback: [
+      model.renderAside,
+      // model.cookieCheckRequest,
+      // model.cartGetRequest
+    ]
+  },
+
+  {
+    event: 'category get success',
+    callback: [
+      model.categoryGetSuccess
+    ]
+  },
+  {
+    event: 'category get fail',
+    callback: [
+      model.categoryGetFail
+    ]
+  },
+
+  {
+    event: 'category request success',
+    callback: [
+      model.categoryRequestSuccess,
+    ]
+  },
+  {
+    event: 'category request fail',
+    callback: [
+      model.categoryRequestFail
+    ]
+  },
+
+  {
+    event: 'category state request',
+    callback: [
+      model.categoryStateRequest
+    ]
+  },
+  {
+    event: 'category state confirmed',
+    callback: [
+      model.categoryStateConfirmed
+    ]
+  },
+  {
+    event: 'category state denied',
+    callback: [
+      model.categoryStateDenied
     ]
   }
 ];
