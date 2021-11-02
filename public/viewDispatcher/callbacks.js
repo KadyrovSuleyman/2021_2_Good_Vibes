@@ -125,6 +125,10 @@ export const cartGetRequest = () => {
 };
 
 export const init = () => {
+  eventBus.emit('cookie check request');
+  eventBus.emit('cart get request');
+  eventBus.emit('category get request');
+
   const root = document.getElementsByClassName('grid-container')[0];
   const buffObj = new constructors.Hood(root);
   add({
@@ -134,10 +138,6 @@ export const init = () => {
       state: state.hidden
     }
   });
-
-  eventBus.emit('cookie check request');
-  eventBus.emit('cart get request');
-  eventBus.emit('category get request');
 
   view.Hood.state = state.visible;
   return view.Hood.element.render()
@@ -742,4 +742,15 @@ export const profileUploadFail = (responseText) => {
 
 export const profileUploadSuccess = (responseText) => {
   console.log('profile upload success', responseText);
+};
+
+export const emptyCartHandle = () => {
+  console.log('emptyCartHandle');
+
+  if (cart.isEmpty()) {
+    eventBus.emit('cart is empty');
+    return;
+  }
+
+  eventBus.emit('cart is not empty');
 };

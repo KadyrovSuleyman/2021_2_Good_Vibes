@@ -16,28 +16,9 @@ export const deliveryBtnClick = () => {
     delete element.price;
   });
 
-
-
   console.log(c);
 
-
-  // const temp = {
-  //   date: '2016-12-06 06:56:01',
-  //   address: {
-  //     country: 'country',
-  //     region: 'region',
-  //     city: 'city',
-  //     street: 'street',
-  //     house: 'house',
-  //     flat: 'flat',
-  //     index: 'index'
-  //   },
-  //   // cost: 213,
-  //   products: b
-  // };
-
   const obj = {
-    date: '2016-12-06 06:56:01',
     address: a,
     products: c,
   };

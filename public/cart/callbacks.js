@@ -152,3 +152,7 @@ export const deleteAllItems = () => {
 
   eventBus.emit('calculate subtotal');
 };
+
+export const cartEmptyHandle = () => {
+  console.log('empty cart handle');
+};

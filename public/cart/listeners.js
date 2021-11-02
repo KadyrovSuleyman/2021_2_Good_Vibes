@@ -6,6 +6,7 @@ const cartListeners = [
     event: 'order click',
     callback: [
       cart.showOrder
+      // cart.orderClick
     ]
   },
   {
@@ -59,6 +60,19 @@ const cartListeners = [
     event: 'cart clean',
     callback: [
       cart.deleteAllItems
+    ]
+  },
+
+  {
+    event: 'cart is empty',
+    callback: [
+      cart.cartEmptyHandle
+    ]
+  },
+  {
+    event: 'cart is not empty',
+    callback: [
+      cart.showOrder
     ]
   }
 ];

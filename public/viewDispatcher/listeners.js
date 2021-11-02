@@ -202,7 +202,8 @@ const viewDispatcherListeners = [
     event: 'cart state confirmed',
     callback: [
       model.cartStateConfirmed,
-      history.add
+      history.add,
+      model.emptyCartHandle
     ]
   },
   {
@@ -216,7 +217,8 @@ const viewDispatcherListeners = [
   {
     event: 'cart get success',
     callback: [
-      model.cartGetSuccess
+      model.cartGetSuccess,
+      // model.emptyCartHandle
     ]
   },
   {
@@ -349,7 +351,14 @@ const viewDispatcherListeners = [
     callback: [
       model.profileUploadFail
     ]
-  }
+  },
+
+  // {
+  //   event: 'order click',
+  //   callback: [
+  //     model.cartStateRequest
+  //   ]
+  // }
 ];
 
 export default viewDispatcherListeners;
