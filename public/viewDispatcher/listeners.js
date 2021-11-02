@@ -303,6 +303,52 @@ const viewDispatcherListeners = [
     callback: [
       model.categoryStateDenied
     ]
+  },
+
+  {
+    event: 'delete button click',
+    callback: [
+      model.cartDeleteRequest
+    ]
+  },
+  {
+    event: 'cart delete fail',
+    callback: [
+      model.cartDeleteFail
+    ]
+  },
+  {
+    event: 'cart delete success',
+    callback: [
+      model.cartDeleteSuccess
+    ]
+  },
+
+  {
+    event: 'cart confirm fail',
+    callback: [
+      model.cartConfirmFail
+    ]
+  },
+  {
+    event: 'cart confirm success',
+    callback: [
+      model.cartConfirmSuccess,
+      model.cleanCartView
+    ]
+  },
+
+  {
+    event: 'profile upload success',
+    callback: [
+      model.profileUploadSuccess
+    ]
+  },
+  {
+    event: 'profile upload fail',
+    callback: [
+      model.profileUploadFail
+    ]
   }
 ];
 

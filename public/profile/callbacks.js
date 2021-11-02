@@ -53,6 +53,9 @@ export const avatarUploadRequest = () => {
 
 export const avatarUploadSuccess = (responseText) => {
   console.log('avatar upload success', responseText);
+
+  // const photo = document.getElementsByClassName('photo')[0];
+  // photo.srt = responseText;
 };
 
 export const avatarUploadFail = (responseText) => {
@@ -75,4 +78,18 @@ export const updateUserInformation = () => {
   }
 
   photo.src = user.avatar;
+};
+
+export const profileUploadRequest = () => {
+  console.log('profileUploadRequest');
+
+  const usernameInput = document.getElementById('login');
+  const emailInput = document.getElementById('email');
+
+  const obj = {
+    username: usernameInput.value.trim(),
+    email: emailInput.value.trim()
+  };
+
+  eventBus.emit('profile upload request', obj);
 };

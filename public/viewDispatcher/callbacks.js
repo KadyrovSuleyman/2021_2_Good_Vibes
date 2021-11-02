@@ -698,3 +698,48 @@ export const categoryStateDenied = () => {
 
   eventBus.emit('homepage state request');
 };
+
+export const cartDeleteRequest = (id) => {
+  console.log('cart delete request', id);
+
+  const obj = cart.getProduct(id);
+
+  const temp = {};
+  Object.assign(temp, obj);
+  delete temp.price;
+
+  console.log(temp);
+
+  eventBus.emit('cart delete request', obj);
+};
+
+export const cartDeleteFail = (responseText) => {
+  console.error('cart delete fail', responseText);
+};
+
+export const cartDeleteSuccess = (responseText) => {
+  console.log('cart delete success', responseText);
+
+  const obj = JSON.parse(responseText);
+
+  cart.delete({
+    id: obj.product_id,
+    number: obj.number
+  });
+};
+
+export const cartConfirmFail = (responseText) => {
+  console.error('cart confirm error', responseText);
+};
+
+export const cartConfirmSuccess = (responseText) => {
+  console.log('cart confirm success', responseText);
+};
+
+export const profileUploadFail = (responseText) => {
+  console.error('profile upload fail', responseText);
+};
+
+export const profileUploadSuccess = (responseText) => {
+  console.log('profile upload success', responseText);
+};

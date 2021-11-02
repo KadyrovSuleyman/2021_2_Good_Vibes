@@ -41,12 +41,26 @@ const cartListeners = [
     ]
   },
 
-  // {
-  //   event: 'cart clean',
-  //   callback: [
-  //     cart.clean
-  //   ]
-  // }
+  {
+    event: 'delete button click',
+    callback: [
+      // cart.deleteItem
+    ]
+  },
+
+  {
+    event: 'cart delete success',
+    callback: [
+      cart.deleteItem
+    ]
+  },
+
+  {
+    event: 'cart clean',
+    callback: [
+      cart.deleteAllItems
+    ]
+  }
 ];
 
 export default cartListeners;

@@ -84,6 +84,19 @@ const ajaxListeners = [
     callback: [
       ajax.categoryRequest
     ]
+  },
+  {
+    event: 'cart delete request',
+    callback: [
+      ajax.cartDelete
+    ]
+  },
+
+  {
+    event: 'profile upload request',
+    callback: [
+      ajax.profileUpload
+    ]
   }
 ];
 

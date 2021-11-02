@@ -130,30 +130,34 @@ export const cartGet = () => {
     .catch(({ responseText }) => eventBus.emit('cart get fail', { responseText }));
 };
 
-export const cartConfirm = (array) => {
+export const cartConfirm = (obj) => {
   // console.log(array);
 
-  const temp = {
-    date: '2016-12-06 06:56:01',
-    address: {
-      country: 'country',
-      region: 'region',
-      city: 'city',
-      street: 'street',
-      house: 'house',
-      flat: 'flat',
-      index: 'index'
-    },
-    // cost: 213,
-    products: array
-  };
+  // const temp = {
+  //   date: '2016-12-06 06:56:01',
+  //   address: {
+  //     country: 'country',
+  //     region: 'region',
+  //     city: 'city',
+  //     street: 'street',
+  //     house: 'house',
+  //     flat: 'flat',
+  //     index: 'index'
+  //   },
+  //   // cost: 213,
+  //   products: array
+  // };
+
+  console.log('cart confirm', JSON.stringify(obj));
 
   ajax.post({
     url: `${backendAddress}/cart/confirm`,
-    body: temp
+    body: obj
   })
-    .then(({ responseText }) => console.log({ responseText }))
-    .catch(({ responseText }) => console.log({ responseText }));
+    // .then(({ responseText }) => console.log({ responseText }))
+    // .catch(({ responseText }) => console.log({ responseText }));
+    .then(({ responseText }) => eventBus.emit('cart confirm success', responseText))
+    .catch(({ responseText }) => eventBus.emit('cart comfirm fail', responseText));
 };
 
 export const avatarUpload = (file) => {
@@ -198,3 +202,25 @@ export const categoryRequest = (name) => {
     .then(({ responseText }) => eventBus.emit('category request success', responseText))
     .catch(({ responseText }) => eventBus.emit('category request fail', responseText));
 };
+
+export const cartDelete = (obj) => {
+  console.log('cart delete', obj);
+
+  ajax.post({
+    url: `${backendAddress}/cart/delete`,
+    body: obj
+  })
+    .then(({ responseText }) => eventBus.emit('cart delete success', responseText))
+    .catch(({ responseText }) => eventBus.emit('cart delete fail', responseText));
+};
+
+export const profileUpload = (obj) => {
+  console.log('profile upload', obj);
+
+  ajax.post({
+    url: `${backendAddress}/profile`,
+    body: obj
+  })
+    .then(({ responseText }) => eventBus.emit('profile upload success', responseText))
+    .catch(({ responseText }) => eventBus.emit('profile upload fail', responseText));
+}
