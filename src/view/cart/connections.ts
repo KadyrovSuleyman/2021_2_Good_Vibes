@@ -8,16 +8,24 @@ const connections: Connection[] = [
   },
   {
     event: 'cart shown',
-    callback: cart.productArrayRequest,
+    callback: [
+      cart.productArrayRequest,
+      cart.calculateSubtotal,
+    ],
   },
   {
     event: 'product array request confirmed',
-    callback: cart.showCartItems,
+    callback: [
+      cart.showCartItems,
+    ],
   },
-  // {
-  //   event: 'delete product',
-  //   callback: cart.showCartItems,
-  // },
+  {
+    event: 'delete product',
+    callback: [
+      cart.deleteView,
+      cart.calculateSubtotal,
+    ],
+  },
 ];
 
 export default connections;

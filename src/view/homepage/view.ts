@@ -3,6 +3,8 @@ import View from '../view';
 import { ViewInterface } from '../../types';
 import bus from '../../init/bus';
 import connections from './connections';
+// import * as styles from './homepage.scss';
+import './homepage.scss';
 
 export default class Homepage extends View implements ViewInterface {
   private async renderHTML() {

@@ -2,12 +2,14 @@ import { Product } from '../../types';
 import CartItemClass from './item/view';
 
 class ProductCardList {
-  private list: {
+  public list: {
     [id: number]: {
       'context': Product,
       'view': CartItemClass,
     }
   } = {};
+
+  public views: CartItemClass[] = [];
 
   private addArray(array: Product[]) {
     array.forEach((productContext) => {
@@ -39,14 +41,14 @@ class ProductCardList {
   }
 
   public viewArray(array: Product[]): CartItemClass[] {
-    const result: CartItemClass[] = [];
+    this.views = [];
 
     this.addArray(array);
     array.forEach((productContext) => {
-      result.push(this.list[productContext.id].view);
+      this.views.push(this.list[productContext.id].view);
     });
 
-    return result;
+    return this.views;
   }
 
   public deleteItem(id: number) {
