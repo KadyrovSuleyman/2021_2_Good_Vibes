@@ -5,7 +5,7 @@ import { Callback, OrderRequest } from '../../../types';
 import productCardList from '../list';
 
 export const showProductArray: Callback = () => {
-  const itemsContainer = <HTMLElement>document.getElementsByClassName('items')[0];
+  const itemsContainer = <HTMLElement>document.getElementsByClassName('cart-list__items')[0];
 
   itemsContainer.textContent = '';
 
@@ -15,7 +15,7 @@ export const showProductArray: Callback = () => {
     itemsContainer.appendChild(view);
 
     const { number } = cartItem;
-    const numberElem = <HTMLInputElement>view.getElementsByClassName('number')[0];
+    const numberElem = <HTMLInputElement>view.getElementsByClassName('cart__qty-select')[0];
     numberElem.value = number.toString();
   });
 };
@@ -53,4 +53,33 @@ export const confirmAjaxRequest: Callback = () => {
   };
 
   bus.emit('cart confirm request', obj);
+};
+
+export const calculateSubtotal: Callback = () => {
+  // let totalNumber = 0;
+  let totalPrice = 0;
+
+  if (!cart.isEmpty()) {
+    cart.get().forEach((cartElem) => {
+      const { number } = cartElem;
+      // totalNumber += number;
+
+      const price = productCardList.list[cartElem.product_id]?.context?.price;
+      if (!price) return;
+
+      totalPrice += number * price;
+    });
+  }
+
+  const itemPriceDiv = <HTMLElement>document.getElementsByClassName('items-price')[0];
+  if (!itemPriceDiv) {
+    return;
+  }
+  itemPriceDiv.innerHTML = `$${totalPrice}`;
+
+  const totalPriceDiv = <HTMLElement>document.getElementsByClassName('total-price')[0];
+  if (!totalPriceDiv) {
+    return;
+  }
+  totalPriceDiv.innerHTML = `$${totalPrice}`;
 };

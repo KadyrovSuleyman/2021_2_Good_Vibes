@@ -13,7 +13,6 @@ const initEvents: (self: HTMLElement, context: Product) => void = (self, context
   });
 
   // --------------
-  // const nameHref = <HTMLAnchorElement>self.getElementsByClassName('cart__link')[0].firstChild;
   const nameHref = <HTMLAnchorElement>self.getElementsByClassName('link')[0];
 
   nameHref.addEventListener('click', (event) => {
@@ -30,6 +29,11 @@ const initEvents: (self: HTMLElement, context: Product) => void = (self, context
     let value = +numberInput.value;
     if (value < 0) {
       value = 0;
+    }
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    const { count_in_stock } = context;
+    if (value > count_in_stock) {
+      value = context.count_in_stock;
     }
     value = Math.floor(value);
     if (value === 0) {

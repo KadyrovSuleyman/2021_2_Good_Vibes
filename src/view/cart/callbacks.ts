@@ -22,20 +22,12 @@ export const calculateSubtotal: Callback = () => {
       const { number } = cartElem;
       totalNumber += number;
 
-      const { price } = CartItemList.list[cartElem.product_id].context;
+      const price = CartItemList.list[cartElem.product_id]?.context?.price;
+      if (!price) return;
+
       totalPrice += number * price;
     });
   }
-
-  // <<<<<<< HEAD
-  //   const subElem = <HTMLElement>document.getElementsByClassName('subtotal')[0];
-  //   if (!subElem) {
-  //     return;
-  //   }
-  // =======
-  //   const subElem = <HTMLElement>document.getElementsByClassName('cart__subtotal')[0];
-  // >>>>>>> 0b511cea9ffbd83ba014236bfb32bbf8173798db
-  //   subElem.innerHTML = `<h3>Итого (${totalNumber} товаров): $${totalPrice}</h3>`;
 
   const subElem = <HTMLElement>document.getElementsByClassName('cart__subtotal')[0];
   if (!subElem) {
@@ -51,7 +43,7 @@ export const showCartItems: Callback = (array: Product[]) => {
   viewArray.forEach((itemView, index) => {
     itemsContainer.appendChild(itemView.self);
     const { number } = cart.getItem(array[index].id);
-    const numberElem = <HTMLInputElement>itemView.self.getElementsByClassName('number')[0];
+    const numberElem = <HTMLInputElement>itemView.self.getElementsByClassName('cart__qty-select')[0];
     numberElem.value = number.toString();
   });
   calculateSubtotal(undefined);
