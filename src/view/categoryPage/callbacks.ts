@@ -29,6 +29,9 @@ export const addProductArray: Callback = (array: Product[]) => {
 };
 
 export const saveCurrentCategoryName: Callback = () => {
+  // const { search } = window.location;
+  // [, categoryName] = search.match(/.*name=(\w+)/u);
+
   const { search } = window.location;
   [, categoryName] = search.match(/.*name=(\w+)/u);
 };

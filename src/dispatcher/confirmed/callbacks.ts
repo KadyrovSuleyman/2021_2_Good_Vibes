@@ -101,7 +101,8 @@ export const showCategoryPage: Callback = () => {
 
 export const categoryAddToHistory: Callback = (obj: { name: string }) => {
   addToHistory({
-    pathname: `/category?name=${obj.name}`,
+    // pathname: `/category?name=${obj.name}`,
+    pathname: obj.name,
   });
 };
 

@@ -167,13 +167,18 @@ export const categoryRequest: Callback = (obj: { name: string }) => {
     orderType,
   } = searchParams;
 
+  const temp = {
+    name: `/category/${name}?price_min=${minPrice}&price_max=${maxPrice}&rating_min=${minRating}&rating_max=${maxRating}&order=${type}&order_type=${orderType}`
+  };
+
   ajax.get({
     // url: `${backendAddress}/category/${name}`,
     url: `${backendAddress}/category/${name}?price_min=${minPrice}&price_max=${maxPrice}&rating_min=${minRating}&rating_max=${maxRating}&order=${type}&order_type=${orderType}`,
   })
 
     .then((response: AjaxResponse) => bus.emit('category ajax confirmed', response))
-    .then(() => bus.emit('category ajax name', obj))
+    // .then(() => bus.emit('category ajax name', obj))
+    .then(() => bus.emit('category ajax name', temp))
     .catch((response: AjaxResponse) => bus.emit('category ajax denied', response));
 };
 

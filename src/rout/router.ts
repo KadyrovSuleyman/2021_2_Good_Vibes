@@ -28,6 +28,7 @@ class Router {
 
     let uri = pathname;
     const reg = pathname.match(/(\/.*)\?/);
+    // const reg = pathname.match(/.*name=(\w+)/u);
     if (reg) {
       [, uri] = reg;
     }
