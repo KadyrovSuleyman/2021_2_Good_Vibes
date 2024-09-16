@@ -16,6 +16,8 @@ export const addProductArray: Callback = (array: Product[]) => {
 };
 
 export const addProductArrayRec: Callback = (array: Product[]) => {
+  // debugger;
+
   const productContainer = document.getElementById('product-table-bodytrends');
   /* productContainer.textContent = '';
 
@@ -23,7 +25,7 @@ export const addProductArrayRec: Callback = (array: Product[]) => {
 
   const viewArray = ProductCatdList.viewArray(array);
   viewArray?.forEach((cardView) => {
-    productContainer.appendChild(cardView.self);
+    productContainer?.appendChild(cardView.self);
   });
 };
 
@@ -53,3 +55,4 @@ export const authorizeContentHandle: Callback = () => {
 
   hideSignInContent(undefined);
 }; */
+

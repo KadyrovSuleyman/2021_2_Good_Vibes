@@ -1,7 +1,10 @@
-import { CartItem } from '../../types';
+import bus from '../../modules/bus/bus';
+import { Callback, CartItem, Product } from '../../types';
 
 class Cart {
   private self: CartItem[] = [];
+  private promo: string;
+  private favorite: Product[] = [];
 
   private confirmed = false;
 
@@ -114,6 +117,47 @@ class Cart {
     this.self = localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems'))
       : [];
+  }
+
+  set setPromo(promo: string) {
+    this.promo = promo;
+  }
+
+  get getPromo() {
+    return this.promo;
+  }
+
+  // -------------------------
+
+  public addToFavorite: Callback = (prod: Product) => {
+    let flag = false;
+    this.favorite.map(item => {
+      if (item.id === prod.id) {
+        flag = true;
+      }
+    });
+    if (flag) {
+      return;
+    }
+
+    this.favorite.push(prod);
+    localStorage.setItem('faviroteItems', JSON.stringify(this.favorite));
+  }
+
+  public dropFavorite: Callback = () => {
+    this.favorite = [];
+    localStorage.setItem('faviroteItems', JSON.stringify(this.favorite));
+  }
+
+  public deleteFromFavorite: Callback = ({ id }: { id: number }) => {
+    const idx = this.favorite.findIndex(item => item.id === id);
+
+    console.warn(idx);
+
+    if (idx !== -1) {
+      this.favorite.splice(idx, 1);
+    }
+    localStorage.setItem('faviroteItems', JSON.stringify(this.favorite));
   }
 }
 

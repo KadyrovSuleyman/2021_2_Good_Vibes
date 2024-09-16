@@ -43,15 +43,42 @@ export const profile: Callback = () => {
 
 export const homepage: Callback = () => {
   bus.emit('homepage ajax request', undefined);
-  bus.emit('recommendation ajax request', undefined);
+  // bus.emit('recommendation ajax request', undefined);
 };
 
 export const product: Callback = (obj: { 'id': number, 'search'?: boolean }) => {
   bus.emit('product ajax request', obj);
 };
 
+export const brandProductStateRequest: Callback = (obj: { 'name': string, id: number }) => {
+  bus.emit('brand products ajax request', obj);
+};
+
 export const cartState: Callback = () => {
   bus.emit('cart state confirmed', { state: 'cart', pathname: '/cart' });
+};
+
+export const favorite: Callback = () => {
+  // bus.emit('favorite ajax request', undefined);
+
+  if (!user.isAutorize()) {
+    bus.emit('signIn state request', undefined);
+    return;
+  };
+
+  bus.emit('favorite ajax request', undefined);
+};
+
+export const brands: Callback = () => {
+  bus.emit('brands ajax request', undefined);
+};
+
+export const newest: Callback = () => {
+  bus.emit('newest ajax request', undefined);
+};
+
+export const sales: Callback = () => {
+  bus.emit('sales ajax request', undefined);
 };
 
 export const address: Callback = () => {
@@ -113,7 +140,25 @@ export const savedState: Callback = () => {
 };
 
 export const orders: Callback = () => {
+  // bus.emit('orders state confirmed', { state: 'orders', pathname: '/orders' });
+
+  if (!user.isAutorize()) {
+    bus.emit('signIn state request', undefined);
+    return;
+  };
+
   bus.emit('orders state confirmed', { state: 'orders', pathname: '/orders' });
+};
+
+export const reviews: Callback = () => {
+  // bus.emit('reviews state confirmed', { state: 'request', pathname: '/reviews' });
+
+  if (!user.isAutorize()) {
+    bus.emit('signIn state request', undefined);
+    return;
+  };
+
+  bus.emit('reviews state confirmed', { state: 'request', pathname: '/reviews' });
 };
 
 export const search: Callback = (obj: { str: string }) => {

@@ -25,20 +25,24 @@ const initEvents: (self: HTMLElement) => void = (self) => {
     // console.log('!!! submit', str);
     // bus.emit('search ajax request', { str });
     bus.emit('search state request', { str });
+    bus.emit('close button click', undefined);
   });
 
-  // ----------------------
-  document.addEventListener('click', (event) => {
-    // event.preventDefault();
 
-    const targetNode = <Node>event.target;
-    const searchInputNode = <Node>self.getElementsByTagName('input')[0];
 
-    // console.log(targetNode);
+  // // ----------------------
+  // document.addEventListener('click', (event) => {
+  //   // event.preventDefault();
 
-    if (searchInputNode.contains(targetNode)) return;
-    bus.emit('delete suggests list', undefined);
-  });
+  //   const targetNode = <Node>event.target;
+  //   const searchInputNode = <Node>self.getElementsByTagName('input')[0];
+
+  //   // console.log(targetNode);
+
+  //   if (searchInputNode.contains(targetNode)) return;
+  //   bus.emit('delete suggests list', undefined);
+  // });
+
 
   // ----------------------
   document.addEventListener('blur', (event) => {

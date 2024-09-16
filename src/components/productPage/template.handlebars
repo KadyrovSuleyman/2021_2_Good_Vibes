@@ -7,18 +7,22 @@
   <div class="board">
     <div class="board-inner" id="board">
       <div class="board-left" id="board-left-side">
-        <div class="slides">
-          <img class="slides__picture" id="pic" src="{{image}}" alt="" />
+        <div class="slider">
+          <div class="slider__inner">
+            <div class="carousel-wrapper">
+              <div class="mini-img-container">
+              </div>
+            </div>
+          </div>
+          <div class="slider-preview">
+            <img class="slider-preview__picture" id="pic" src="{{0}}" alt="" />
+          </div>
         </div>
         <div class="info-card-mobile">
           <span class="iinfo-card-mobile__name">{{name}}</span>
           <p class="info-card-mobile__price">{{price}} ₽</p>
           <div class="info-card-mobile__separator"></div>
-          <div
-            class="info-card-mobile-content"
-            id="card-profile"
-            data-action="userClick"
-          >
+          <div class="info-card-mobile-content" id="card-profile" data-action="userClick">
             <div class="info-card-mobile-container">
 
               <div class="info-card-mobile-rating">
@@ -47,11 +51,7 @@
           <span class="info-card__name">{{name}}</span>
           <p class="info-card__price">{{price}} ₽</p>
           <div class="info-card__separator"></div>
-          <div
-            class="info-card-content"
-            id="card-profile"
-            data-action="userClick"
-          >
+          <div class="info-card-content" id="card-profile" data-action="userClick">
             <div class="info-card-container">
 
               <div class="info-card-rating">
@@ -73,12 +73,12 @@
             <span class="info-card-about__span">О товаре</span>
             <span class="info-card-about__description">{{description}}</span>
           </div>
+
         </div>
       </div>
     </div>
+    <div class="board-bottom" id="board-bottom-side">
+      <button class="info-favorite-btn__favorite flagIsFavorite_false">{{nameBtn}}</button>
+    </div>
   </div>
-
-  <div class="board-bottom" id="board-bottom-side">
-  </div>
-
 </div>

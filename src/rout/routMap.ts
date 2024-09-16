@@ -12,6 +12,12 @@ const routMap = {
   '/confirmation': 'confirmation',
   '/orders': 'orders',
   '/search': 'search',
+  '/favorite': 'favorite',
+  '/reviews': 'reviews',
+  '/brands': 'brands',
+  '/new': 'newest',
+  '/sales': 'sales',
+  '/brand/products': 'brand product',
 };
 
 export default routMap;

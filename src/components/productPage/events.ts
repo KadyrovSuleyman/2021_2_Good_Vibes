@@ -1,7 +1,12 @@
 import bus from '../../modules/bus/bus';
-import { Product } from '../../types';
+import user from '../../services/user/user';
+import { Product, ProductId } from '../../types';
 
-const initEvents: (self: HTMLElement, context: Product) => void = (self, context) => {
+// const initEvents: (self: HTMLElement, context: Product) => void = (self, context) => {
+const initEvents: (self: HTMLElement, { context, img }: { context: Product, img: string[] }) => void = (self, { context, img }) => {
+
+  // debugger;
+
   // ------------------
   const backBtn = <HTMLAnchorElement>self.getElementsByClassName('back-to-result__link')[0];
   backBtn.addEventListener('click', (event) => {
@@ -27,6 +32,44 @@ const initEvents: (self: HTMLElement, context: Product) => void = (self, context
     const { id } = context;
 
     bus.emit('add product to cart mobile', { id, number: 1 });
+  });
+
+  const addBtnAddFavorite = <HTMLButtonElement>self.getElementsByClassName('flagIsFavorite_false')[0];
+  addBtnAddFavorite?.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const { id } = context;
+
+    // debugger;
+
+    if (!user.isAutorize()) {
+      bus.emit('signIn state request', undefined);
+      // console.warn('asdfa');
+      return;
+    }
+
+    bus.emit('add product to favorite', { id });
+
+    // bus.emit('add product to favorite local remote', { id });
+  });
+
+  const addBtnDelFavorite = <HTMLButtonElement>self.getElementsByClassName('flagIsFavorite_true')[0];
+  addBtnDelFavorite?.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const { id } = context;
+
+    // debugger;
+
+    if (!user.isAutorize()) {
+      bus.emit('signIn state request', undefined);
+
+      // console.warn('asdfa');
+
+      return;
+    }
+
+    bus.emit('del product from favorite', { id });
   });
 };
 

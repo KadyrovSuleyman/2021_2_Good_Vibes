@@ -1,0 +1,44 @@
+@import "../../styles/main.scss";
+
+.table-only-brads {
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);    
+  }
+}
+
+.a3p5 {
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: color;
+  cursor: pointer;
+}
+
+.e4j5 img {
+  border-radius: 12px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: filter;
+  padding: 2vw 0vw;
+  width: max-content;
+  height: 100%;
+  width: 100%;
+  object-fit: scale-down;
+}
+/* .ui-p1 {
+  max-height: 100%;
+  max-width: 100%;
+} */
+.e4k1 .a6x3.e4k2 {
+  left: 24px;
+  position: absolute;
+  top: 14%;
+}
+.e4j5 .a6x3 {
+  margin: 0;
+}
+
+.brand-card {
+  // width: 21vw;
+  // height: 150px;
+  margin-right: 0.5vw;
+}

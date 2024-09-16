@@ -2,6 +2,11 @@ import bus from "../../modules/bus/bus";
 import { AjaxResponse, Callback, Category } from "../../types";
 import categoryList from "../../services/category/list";
 
+import img from '../../img/svg/KEY0.CC-Chevron-Svg-Transparent-Unicode-Chevron.png';
+// import * as img from '../../img/svg/KEY0.CC-Chevron-Svg-Transparent-Unicode-Chevron.png';
+
+// import a from '../../img/svg/'
+
 export const show: Callback = () => {
   const asideObj = <HTMLElement>(
     document.getElementsByClassName("aside-container")[0]
@@ -184,10 +189,15 @@ export const addCategory: (obj: Category, parent: HTMLElement) => HTMLElement =
     if (obj.children) {
       const span = <HTMLAnchorElement>document.createElement("span");
       link.appendChild(span);
-      const i = <HTMLElement>document.createElement("i");
-      i.className = "fa fa-chevron-right";
-      /* i.style.marginRight = "20px"; */
-      span.appendChild(i);
+
+      var imgg = new Image();
+
+      imgg.src = img;
+
+      imgg.style.height = '15px'
+      imgg.className = 'fa fa-chevron-right';
+
+      span.appendChild(imgg);
     }
 
     parent.appendChild(child);

@@ -15,7 +15,6 @@
     width: 14vh;
     height: 4vh;
     border: 1px solid;
-    box-sizing: border-box;
     padding-left: 10px;
     font-size: 1.5vh;
     border-radius: 0.5vh 0 0 0.5vh;
@@ -26,7 +25,6 @@
     width: 13vh;
     height: 4vh;
     border: 1px solid;
-    box-sizing: border-box;
     padding-left: 10px;
     font-size: 1.5vh;
     border-radius: 0 0.5vh 0.5vh 0;
@@ -101,19 +99,19 @@
     }
 
     &__title {
-      margin-top: 0;
+      // margin-top: 0;
 
-      @media screen and (max-width: $breakDesktop) {
-        margin-top: revert;
-      }
+      // @media screen and (max-width: $breakDesktop) {
+      //   margin-top: revert;
+      // }
 
-      @media screen and (max-width: $breakTablet) {
-        margin-top: revert;
-      }
+      // @media screen and (max-width: $breakTablet) {
+      //   margin-top: revert;
+      // }
 
-      @media screen and (max-width: $breakMobile) {
-        margin-top: revert;
-      }
+      // @media screen and (max-width: $breakMobile) {
+      //   margin-top: revert;
+      // }
     }
 
     &-elem {
@@ -149,13 +147,28 @@
       display: flex;
       width: 100%;
 
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+
       &__from {
         @include set-size(14vh, 4vh);
         @include input;
         font-size: 1.5vh;
 
         border-radius: 0.5vh 0 0 0.5vh;
-        background-color: whitesmoke;
+
+        // background-color: whitesmoke;
+
+        // background-color: black;
+
         @media screen and (max-width: $breakDesktop) {
           @include set-size(50%, 5vh);
         }
@@ -267,4 +280,8 @@
 
 label {
   font-size: 1.5vh;
+}
+
+.search-filter {
+  margin-top: 2vh;
 }

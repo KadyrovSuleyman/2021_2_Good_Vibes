@@ -12,7 +12,7 @@ const viewMap: {
   }
 } = {};
 
-let currentView: string;
+export let currentView: string;
 
 const add: (name: string, view: ViewInterface) => void = (name: string, view: ViewInterface) => {
   viewMap[name] = {
@@ -33,9 +33,8 @@ const viewGenerate: (name: string) => void = (name: string) => {
   viewMap[name].visibility = false;
 };
 
-export const showView: ShowViewSignature = (obj: { 'name': string, 'context': Product }) => {
+export const showView: ShowViewSignature = (obj: { 'name': string, 'context': Product, 'brand'?: string }) => {
   const { name, context } = obj;
-
   const header = <HTMLElement>document.getElementsByClassName('header')[0];
   const footer = <HTMLElement>document.getElementsByClassName('footer')[0];
   const viewer = <HTMLElement>document.getElementsByClassName('wiki-viewer')[0];
@@ -78,9 +77,7 @@ export const showView: ShowViewSignature = (obj: { 'name': string, 'context': Pr
   }
 
   // --------------------
-
   viewMap[name].visibility = true;
-
   let fullName = name;
   if (context) {
     fullName += ` ${context.id}`;
@@ -93,8 +90,8 @@ export const showView: ShowViewSignature = (obj: { 'name': string, 'context': Pr
       }
     })
     .then(() => { currentView = name; })
-    .then(() => { if (fullName !== name) bus.emit(`${name} shown`, context); })
-    .then(() => bus.emit(`${fullName} shown`, context));
+    .then(() => { if (fullName !== name) bus.emit(`${name} shown`, { ...context, brand: obj.brand }); })
+    .then(() => bus.emit(`${fullName} shown`, { ...context, brand: obj.brand }));
 };
 
 export const a = 0;
